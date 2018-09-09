@@ -20,7 +20,7 @@ Before you build, choose which version and distribution you want to build an ima
         $ sh buildDockerImage.sh
         Usage: buildDockerImage.sh -v [version] [-d | -g | -i] [-s]
         Builds a Docker Image for Oracle WebLogic Server.
-          
+
         Parameters:
            -v: version to build. Required.
            Choose : 12.2.1.1
@@ -29,12 +29,8 @@ Before you build, choose which version and distribution you want to build an ima
            -i: creates image based on 'infrastructure' distribution
            -c: enables Docker image layer cache during build
            -s: skips the MD5 check of packages
-        
+
         * select one distribution only: -d, -g, or -i
-        
-        LICENSE CDDL 1.0 + GPL 2.0
-        
-        Copyright (c) 2014-2015 Oracle and/or its affiliates. All rights reserved.
 
 **IMPORTANT:** the resulting images will have an empty domain (only Admin Server) by default. You must extend the image with your own Dockerfile, and create your domain using WLST. You might take a look at the use case samples.
 
@@ -45,17 +41,17 @@ To give users an idea on how to create a domain from a custom Dockerfile to exte
 The image **oracle/weblogic:12.2.1.1-developer** will configure a **base_domain** with the following settings:
 
  * Admin Username: `weblogic`
- * Admin Password: `Auto generated` 
+ * Admin Password: `Auto generated`
  * Oracle Linux Username: `oracle`
  * Oracle Linux Password: `welcome1`
  * WebLogic Server Domain Name: `base_domain`
  * Admin Server on port: `7001`
  * Production Mode: `developer`
-  
-**IMPORTANT:** If you intend to run these images in production you must change the Production Mode to production.
- 
 
-###Admin Password
+**IMPORTANT:** If you intend to run these images in production you must change the Production Mode to production.
+
+
+### Admin Password
 
 On the first startup of the container a random password will be generated for the Administration of the domain. You can find this password in the output line:
 
@@ -71,7 +67,7 @@ The best way to create your own, or extend domains is by using [WebLogic Scripti
 ## Building the Oracle WebLogic Server Docker Image
 To try a sample of a WebLogic Server image with a base domain configured, follow the steps below:
 
-  1. Build the **12.2.1.1** image, go into  **dockerfiles** and call 
+  1. Build the **12.2.1.1** image, go into  **dockerfiles** and call
 
         $ sh buildDockerImage.sh -v 12.2.1.1-d
 
@@ -79,7 +75,7 @@ To try a sample of a WebLogic Server image with a base domain configured, follow
 
         $ docker images
 
-  3. Start a container from the image created in step 1: 
+  3. Start a container from the image created in step 1:
 
         $ docker run -d oracle/weblogic:12.2.1.1-developer
 
@@ -87,7 +83,7 @@ To try a sample of a WebLogic Server image with a base domain configured, follow
 
         $ docker inspect --format '{{.NewworkSettings.IPAddress}}' <container-name>
         This returns the IPAddress (example xxx.xx.x.x) of the container.  Got to your browser and enter http://xxx.xx.x.x:7001/console
-        
+
 
 ## Choose your Oracle WebLogic Server Distribution
 This project hosts two to three configurations (depending on Oracle WebLogic Server version) for building Docker images with WebLogic Server 12c.
@@ -109,7 +105,7 @@ To download and run Oracle WebLogic Server 12c Distribution regardless of inside
 
 To download and run Oracle JDK regardless of inside or outside a Docker container, you must download the binary from Oracle website and accept the license indicated at that pge.
 
-All scripts and files hosted in this project and GitHub [docker/OracleWebLogic](./) repository required to build the Docker images are, unless otherwise noted, released under the Common Development and Distribution License (CDDL) 1.0 and GNU Public License 2.0 licenses.
+All scripts and files hosted in this project and GitHub [docker/OracleWebLogic](./) repository required to build the Docker images are, unless otherwise noted, released under [UPL 1.0](https://oss.oracle.com/licenses/upl/) license.
 
 ## Copyright
-Copyright (c) 2014-2016 Oracle and/or its affiliates. All rights reserved.
+Copyright (c) 2014-2018 Oracle and/or its affiliates. All rights reserved.
